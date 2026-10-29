@@ -1,0 +1,6 @@
+{
+  "name": "EFA TECHNOLOGIE",
+  "description": "Site officiel d'EFA TECHNOLOGIE - EFA Tech, la facilité de la technologie. Découvrez EFA ACONTA, EFA SUITE et EFA GARDE.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
