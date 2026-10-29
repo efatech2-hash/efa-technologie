@@ -26,19 +26,31 @@ export default function DownloadsSection({ onDownloadApk }: DownloadsSectionProp
           </p>
         </div>
 
-        {/* 4 APK Download Cards (1. EFA ACONTA, 2. EFA SUITE, 3. EFA GARDE, 4. EFA SCHOOL) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16 items-stretch">
+        {/* 5 APK Download Cards (1. EFA ACONTA, 2. EFA SUITE, 3. EFA GARDE, 4. EFA SCHOOL, 5. EFA EDO) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-5 mb-16 items-stretch">
           {EFA_ALL_APKS.map((apk) => (
             <div
               key={apk.id}
-              className="p-5 bg-white rounded-[16px] border border-slate-200/90 shadow-2xs hover:shadow-md transition-shadow flex flex-col justify-between relative"
+              className={`p-4 sm:p-5 bg-white rounded-[16px] shadow-2xs hover:shadow-md transition-all flex flex-col justify-between relative ${
+                apk.highlightBorder
+                  ? 'border-2 border-emerald-400 shadow-emerald-500/10'
+                  : 'border border-slate-200/90'
+              }`}
             >
               <div>
-                {/* Badge spécial NOUVEAU en haut à gauche de la carte, au-dessus de l'icône */}
-                <div className="h-6 mb-1 flex items-center">
+                {/* Badges en haut de la carte (ex: NOUVEAU vert + POPULAIRE orange pour EFA EDO) */}
+                <div className="h-6 mb-1.5 flex items-center gap-1.5 flex-wrap">
                   {apk.isNew && (
-                    <span className="inline-flex items-center px-2.5 py-0.5 rounded-full bg-orange-500 text-white text-[10px] font-extrabold uppercase tracking-wider shadow-xs">
+                    <span
+                      className="inline-flex items-center px-2 py-0.5 rounded-full text-white text-[10px] font-extrabold uppercase tracking-wider shadow-xs"
+                      style={{ backgroundColor: apk.newBadgeColor || '#F97316' }}
+                    >
                       NOUVEAU
+                    </span>
+                  )}
+                  {apk.isPopular && (
+                    <span className="inline-flex items-center px-2 py-0.5 rounded-full bg-amber-500 text-white text-[10px] font-extrabold uppercase tracking-wider shadow-xs">
+                      POPULAIRE
                     </span>
                   )}
                 </div>
@@ -73,18 +85,28 @@ export default function DownloadsSection({ onDownloadApk }: DownloadsSectionProp
                 )}
 
                 <div className="text-xs text-slate-600 space-y-1.5 py-3 border-y border-slate-100 mb-5">
-                  <div className="flex justify-between">
-                    <span className="text-slate-400">Taille APK :</span>
+                  <div className="flex justify-between items-center">
+                    <span className="text-slate-400 flex items-center gap-1">
+                      <span>📦</span> Taille APK :
+                    </span>
                     <span className="font-semibold text-slate-800 font-mono">{apk.size}</span>
                   </div>
-                  <div className="flex justify-between">
-                    <span className="text-slate-400">Compatibilité :</span>
+                  <div className="flex justify-between items-center">
+                    <span className="text-slate-400 flex items-center gap-1">
+                      <span>📱</span> Compatibilité :
+                    </span>
                     <span className="font-semibold text-slate-800">Android 7.0+</span>
                   </div>
-                  <div className="flex justify-between">
+                  <div className="flex justify-between items-center">
                     <span className="text-slate-400">Signature :</span>
                     <span className="font-semibold text-emerald-600 flex items-center gap-1">
-                      <ShieldCheck className="w-3.5 h-3.5" /> Signé EFA Tech
+                      <ShieldCheck className="w-3.5 h-3.5 shrink-0" />
+                      <span>Signé EFA Tech</span>
+                      {apk.extraInfo && (
+                        <span className="text-slate-600 font-medium ml-0.5">
+                          + {apk.extraInfo}
+                        </span>
+                      )}
                     </span>
                   </div>
                 </div>
@@ -106,7 +128,7 @@ export default function DownloadsSection({ onDownloadApk }: DownloadsSectionProp
                   {/* Tooltip au hover */}
                   <div className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-2 hidden group-hover/tooltip:flex flex-col items-center z-20">
                     <div className="bg-slate-900 text-white text-[11px] font-semibold py-1.5 px-3 rounded-md shadow-xl whitespace-nowrap">
-                      {apk.comingSoonTooltip || 'Lancement Janvier 2026'}
+                      {apk.comingSoonTooltip || 'Bientôt Disponible'}
                     </div>
                     <div className="w-2 h-2 bg-slate-900 rotate-45 -mt-1" />
                   </div>

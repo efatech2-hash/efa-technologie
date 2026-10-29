@@ -93,8 +93,12 @@ export interface ApkItem {
   apkFilename: string;
   logoSrc: string;
   isNew?: boolean;
+  isPopular?: boolean;
+  newBadgeColor?: string;
   isComingSoon?: boolean;
   comingSoonTooltip?: string;
+  highlightBorder?: boolean;
+  extraInfo?: string;
 }
 
 export const EFA_ALL_APKS: ApkItem[] = [
@@ -139,7 +143,7 @@ export const EFA_ALL_APKS: ApkItem[] = [
     name: 'EFA SCHOOL',
     subtitle: 'Gestion Digitalisée des Écoles',
     tagline: 'Gestion Digitalisée des Écoles',
-    description: 'De la CI à la Terminale - Élèves, Parents, Finances & WhatsApp',
+    description: 'Gestion Digitalisée Écoles Africaines CI à Terminale',
     version: 'v1.0.0',
     size: '21.2 Mo',
     apkPath: '',
@@ -147,7 +151,26 @@ export const EFA_ALL_APKS: ApkItem[] = [
     logoSrc: '/logos/efa-school.webp',
     isNew: true,
     isComingSoon: true,
-    comingSoonTooltip: 'Lancement Janvier 2026',
+    comingSoonTooltip: 'Jan 2026 - YESSOUFOU Malik',
+  },
+  {
+    id: 'efa-edo',
+    name: 'EFA EDO',
+    subtitle: 'Marketplace des Artisans Africains',
+    tagline: 'Marketplace des Artisans Africains',
+    description: 'Trouve un artisan pro près de toi en 30s - Menuisier, Mécano, Soudeur, Maçon',
+    version: 'v1.0.0',
+    size: '24.5 Mo',
+    apkPath: '',
+    apkFilename: '',
+    logoSrc: '/logos/efa-edo.webp',
+    isNew: true,
+    isPopular: true,
+    newBadgeColor: '#22C55E',
+    isComingSoon: true,
+    comingSoonTooltip: 'Lancement Février 2026 - par YESSOUFOU Malik',
+    highlightBorder: true,
+    extraInfo: '🌍 Lomé',
   },
 ];
 
